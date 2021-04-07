@@ -1,0 +1,32 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Scanner;
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+	    System.out.println("enter string");
+		String string = scan.nextLine();
+		System.out.println("enter location");
+		String location = scan.nextLine();
+		validateIDLocations(string, location);
+		getYear(list);
+		scan.close();
+	}
+}
+public class UserMainCode {
+	static String validateIDLocations(String string, String location) {
+		String result = "";
+		String temp = location.substring(0, 3);
+		String[] array = string.split("-");
+		Pattern pattern = Pattern.compile("[0-9]{4}");
+		Matcher match = pattern.matcher(array[2]);
+		boolean res = match.matches();
+		if ((array[0].equals("CTS") && (array[1].equals(temp))) && (res)) {
+			result = "valid id";
+		} else {
+			result = "invalid id";
+		}
+		System.out.println(result);
+		return result;
+	}
+}
