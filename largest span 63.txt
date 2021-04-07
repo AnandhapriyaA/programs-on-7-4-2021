@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Scanner;
+public class mains extends UserMainCode {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+	System.out.println("enter length");
+		int len = scan.nextInt();
+		System.out.println("enter array");
+		int[] array = new int[len];
+		for (int i = 0; i < len; i++) {
+			array[i] = scan.nextInt();
+		}
+		getMaxSpan(array);
+		scan.close();
+	}
+}
+public class UserMainCode {
+static int getMaxSpan(int[] array) {
+		int gap = 0, max = 0;
+		for (int i = 0; i < array.length; i++) {
+			for (int j = i + 1; j < array.length; j++) {
+				if (array[i] == array[j]) {
+					gap = j;
+				}
+			}
+			if (gap - i > max)
+				max = gap - i;
+		}
+		System.out.println(max + 1);
+		return max + 1;
+	}
+}
